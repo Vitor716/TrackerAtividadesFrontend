@@ -1,0 +1,27 @@
+<div class="completed-activities">
+  <div class="header">
+    <span>Atividades completadas</span>
+    <span class="count">{{ completedCount }}</span>
+  </div>
+  <div class="activity-list" cdkDropList (cdkDropListDropped)="drop($event)">
+    <div *ngFor="let activity of activities; let i = index" cdkDrag [ngClass]="{
+      'activity-card': true,
+      'pending': activity.status?.toLowerCase() === 'pendente',
+      'inprogress': activity.status?.toLowerCase() === 'em_andamento',
+      'completed': activity.status?.toLowerCase() === 'concluido'
+    }">
+      <div class="activity-number">{{ i + 1 }}</div>
+      <div class="activity-info">
+        <h4>{{ activity.titulo }}</h4>
+        <p>40 xp</p>
+      </div>
+      <div class="activity-status">
+        <select [(ngModel)]="activity.status" (ngModelChange)="onStatusChange($event, activity)">
+          <option value="PENDENTE">Pendente</option>
+          <option value="EM_ANDAMENTO">Em andamento</option>
+          <option value="CONCLUIDO">Concluído</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>

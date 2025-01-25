@@ -1,0 +1,19 @@
+<div class="container">
+
+  <app-task-user></app-task-user>
+
+  <form class="activity-form" (ngSubmit)="createActivity()" #form="ngForm">
+    <div class="form-group">
+      <label for="title">Título</label>
+      <input type="text" id="title" name="title" [(ngModel)]="newActivity.titulo" required>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Descrição</label>
+      <textarea id="description" name="description" [(ngModel)]="newActivity.descricao" required></textarea>
+    </div>
+
+    <button class="submit-button">Criar atividade</button>
+  </form>
+
+</div>
